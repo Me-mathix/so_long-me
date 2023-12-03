@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-
 int ft_window_size()
 {
 	ft_printf("HEP tu joue a quoi laisse la window tranquille !!!\n");
@@ -52,14 +51,14 @@ void init_char(t_data *data, int value, char ruld)
 	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./test.xpm", &img_width, &img_height);
 	if (ruld == 'r' || ruld == 'l')
 	{
-		if(i + value < 0)
+		if(i + value < 0 || i + value >= 568)
 			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
 		else
 		i += value;
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
-		if(j + value < 0)
+		if(j + value < 0 || j + value >= 368)
 			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
 		else
 		j += value;
@@ -106,11 +105,11 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 
  
-int main(void)
+int main(int argc ,char **argv)
 {
 	t_data data;
 	// t_img pxl;
-
+	(void) argc;
  
  	// int i = 0;
  	// int j = 0;
@@ -121,6 +120,7 @@ int main(void)
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	init_board(&data);
+	parse_map(argv[1], &data);
 	// pxl.img = mlx_new_image(data.mlx_ptr, 600, 400);
 	// pxl.addr = mlx_get_data_addr(pxl.img, &pxl.bits_per_pixel, &pxl.line_length,
 	// 							&pxl.endian);

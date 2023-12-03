@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/11/30 13:28:01 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/03 18:53:13 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 
 typedef struct s_data
 {
-	void *mlx_ptr;
-	void *win_ptr;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	char	**map;
 } t_data;
  
 typedef struct	s_img {
@@ -33,5 +34,8 @@ typedef struct	s_img {
 	int		line_length;
 	int		endian;
 }	t_img;
+
+char **parse_map(char *ol_map, t_data *data);
+char *read_buffer(char *fd_name);
 
 #endif

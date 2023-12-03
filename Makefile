@@ -2,7 +2,7 @@ NAME		=	so_long
 
 CC			=	cc
 
-FLAG		=	-Wall -Wextra -Werror
+FLAG		=	-Wall -Wextra -Werror -g3
 
 LIBFT_PATH	=	./libft/
 
@@ -26,7 +26,8 @@ MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
 
 MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
-SRC			=	main.c
+SRC			=	main.c \
+				parse.c
 
 INC_DIR		=	./
 
