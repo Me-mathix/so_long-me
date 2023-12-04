@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/03 18:53:13 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:07:36 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct s_data
 	void	*win_ptr;
 	char	**map;
 } t_data;
+
+typedef struct s_props
+{
+	int colec;
+	int spawn;
+	int exit; 
+} t_props;
  
 typedef struct	s_img {
 	void	*img;
@@ -35,7 +42,19 @@ typedef struct	s_img {
 	int		endian;
 }	t_img;
 
-char **parse_map(char *ol_map, t_data *data);
-char *read_buffer(char *fd_name);
+char	**parse_map(char *ol_map, t_data *data);
+char	*read_buffer(char *fd_name);
+
+//ERROR
+void	parse_error(char **map, int map_horlen, int map_verlen);
+void	check_wall(char **map, int map_horlen, int map_verlen);
+void	check_props(char **map, int map_horlen, int map_verlen);
+void	check_value(t_props props);
+
+//ERROR UTILS
+void	ft_printerr(int errcode);
+int		is_from_set(char c);
+
+
 
 #endif

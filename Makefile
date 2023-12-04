@@ -27,7 +27,10 @@ MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
 MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 SRC			=	main.c \
-				parse.c
+				parse.c \
+				error.c \
+				print_error.c \
+				error_utils.c
 
 INC_DIR		=	./
 

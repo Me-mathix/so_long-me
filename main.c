@@ -73,6 +73,7 @@ int on_destroy(t_data *data)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	ft_free(data->map);
 	ft_printf("BONK BONK BONK !!!\n");
 	exit(0);
 	return (0);
@@ -119,8 +120,8 @@ int main(int argc ,char **argv)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hi :)");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	init_board(&data);
 	parse_map(argv[1], &data);
+	init_board(&data);
 	// pxl.img = mlx_new_image(data.mlx_ptr, 600, 400);
 	// pxl.addr = mlx_get_data_addr(pxl.img, &pxl.bits_per_pixel, &pxl.line_length,
 	// 							&pxl.endian);
