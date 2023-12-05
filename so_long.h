@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/04 15:07:36 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:29:04 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	char	**map;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**map;
+	int			x_img;
+	int			y_img;
+	int 		x_inmap;
+	int 		y_inmap;
+	int 		map_horlen;
+	int 		map_verlen;
 } t_data;
 
 typedef struct s_props
@@ -42,13 +48,16 @@ typedef struct	s_img {
 	int		endian;
 }	t_img;
 
+//PARSE
 char	**parse_map(char *ol_map, t_data *data);
 char	*read_buffer(char *fd_name);
+void	start_char(t_data *data);
+
 
 //ERROR
-void	parse_error(char **map, int map_horlen, int map_verlen);
-void	check_wall(char **map, int map_horlen, int map_verlen);
-void	check_props(char **map, int map_horlen, int map_verlen);
+void	parse_error(t_data *data);
+void	check_wall(t_data *data);
+void	check_props(t_data *data);
 void	check_value(t_props props);
 
 //ERROR UTILS

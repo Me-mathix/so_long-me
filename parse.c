@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/04 16:49:12 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:18:19 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,42 @@ char *read_buffer(char *fd_name)
 
 char **parse_map(char *ol_map, t_data *data)
 {
-	int map_verlen;
-	int map_horlen;
-	
 	ol_map = read_buffer(ol_map);
 	data->map = ft_split(ol_map, '\n');
 	free(ol_map);
-	map_verlen = 0;
-	map_horlen = 0;
-	while (data->map[map_verlen][0] != '\0')
-		map_verlen++;
-	while (data->map[0][map_horlen] != '\0')
-		map_horlen++;
-	parse_error(data->map ,map_horlen ,map_verlen);
+	data->map_verlen = 0;
+	data->map_horlen = 0;
+	while (data->map[data->map_verlen][0] != '\0')
+		data->map_verlen++;
+	while (data->map[0][data->map_horlen] != '\0')
+		data->map_horlen++;
+	parse_error(data);
+	start_char(data);
 	return (data->map);
+}
+
+void start_char(t_data *data)
+{
+	int i;
+	int j;
+
+	data->x_img = 300;
+	data->y_img = 200;
+	i = 0;
+	j = 0;
+	while (i < (data->map_verlen - 1))
+	{
+		while (j < (data->map_horlen - 1))
+		{
+			if (data->map[i][j] == 'P')
+			{
+				data->x_inmap = i;
+				data->y_inmap = j;
+				return ;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
 }

@@ -1,10 +1,10 @@
 #include "so_long.h"
 
-int ft_window_size()
-{
-	ft_printf("HEP tu joue a quoi laisse la window tranquille !!!\n");
-	return (0);
-}
+// int ft_window_size()
+// {
+// 	ft_printf("HEP tu joue a quoi laisse la window tranquille !!!\n");
+// 	return (0);
+// }
 
 // int ft_exit()
 // {
@@ -18,14 +18,39 @@ int ft_window_size()
 // 	return (0);
 // }
 
-void init_board(t_data *data)
+void init_map(t_data *data)
 {
-	void *sprite;
- 	int i = 0;
- 	int j = 0;	
+	void *wall;
+	int i;
+	int j;
 	int	img_width;
 	int	img_height;
 
+	wall = mlx_xpm_file_to_image(data->mlx_ptr, "./tree.xpm", &img_width, &img_height);
+	i = 200;
+	j = 100;
+	while (j < 300)
+	{
+		while (i < 400)
+		{
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, i, j);
+			i += 32;
+		}
+		j += 32;
+		i = 0;
+	}
+}
+
+void init_board(t_data *data)
+{
+	void *sprite;
+ 	int i;
+ 	int j;	
+	int	img_width;
+	int	img_height;
+
+	i = 0;
+	j = 0;
 	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./snow.xpm", &img_width, &img_height);
 	while (j < 400)
 	{
@@ -42,29 +67,29 @@ void init_board(t_data *data)
 
 void init_char(t_data *data, int value, char ruld)
 {
-	void *sprite;
- 	static int i;
- 	static int j;	
+	void *sprite;	
 	int	img_width;
 	int	img_height;
 
-	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./test.xpm", &img_width, &img_height);
+	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./test.xpm",
+									 &img_width, &img_height);
 	if (ruld == 'r' || ruld == 'l')
 	{
-		if(i + value < 0 || i + value >= 568)
+		if(data->x_img + value < 0 || data->x_img + value >= 568)
 			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
 		else
-		i += value;
+		data->x_img += value;
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
-		if(j + value < 0 || j + value >= 368)
+		if(data->y_img + value < 0 || data->y_img + value >= 368)
 			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
 		else
-		j += value;
+		data->y_img += value;
 	}
+	init_map(data);
 	init_board(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, i, j);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, data->x_img, data->y_img);
 	mlx_destroy_image(data->mlx_ptr, sprite);
 }
 
