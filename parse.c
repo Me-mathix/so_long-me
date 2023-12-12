@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/05 12:18:19 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:10:29 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *read_buffer(char *fd_name)
 	char *buff;
 
 	i = 0;
-	buff = ft_calloc(1, 100);
+	buff = ft_calloc(1, 1000000);
 	file = open(fd_name, O_RDONLY);
 	if (file < 0)
 		return (0);

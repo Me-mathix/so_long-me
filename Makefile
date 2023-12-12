@@ -30,7 +30,9 @@ SRC			=	main.c \
 				parse.c \
 				error.c \
 				print_error.c \
-				error_utils.c
+				error_utils.c \
+				player_move.c \
+				print_wall.c
 
 INC_DIR		=	./
 

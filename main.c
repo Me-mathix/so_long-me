@@ -18,29 +18,6 @@
 // 	return (0);
 // }
 
-void init_map(t_data *data)
-{
-	void *wall;
-	int i;
-	int j;
-	int	img_width;
-	int	img_height;
-
-	wall = mlx_xpm_file_to_image(data->mlx_ptr, "./tree.xpm", &img_width, &img_height);
-	i = 200;
-	j = 100;
-	while (j < 300)
-	{
-		while (i < 400)
-		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, i, j);
-			i += 32;
-		}
-		j += 32;
-		i = 0;
-	}
-}
-
 void init_board(t_data *data)
 {
 	void *sprite;
@@ -62,6 +39,7 @@ void init_board(t_data *data)
 		j += 32;
 		i = 0;
 	}
+	print_wall(data);
 	mlx_destroy_image(data->mlx_ptr, sprite);
 }
 
@@ -71,23 +49,24 @@ void init_char(t_data *data, int value, char ruld)
 	int	img_width;
 	int	img_height;
 
+	if (is_valide_move(data, ruld))
+		return ;
 	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./test.xpm",
 									 &img_width, &img_height);
 	if (ruld == 'r' || ruld == 'l')
 	{
 		if(data->x_img + value < 0 || data->x_img + value >= 568)
-			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
+			;
 		else
 		data->x_img += value;
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
 		if(data->y_img + value < 0 || data->y_img + value >= 368)
-			ft_printf("n'essaye pas de sortir de la fenetre salaud\n");
+			;
 		else
 		data->y_img += value;
 	}
-	init_map(data);
 	init_board(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, data->x_img, data->y_img);
 	mlx_destroy_image(data->mlx_ptr, sprite);
@@ -109,15 +88,13 @@ int on_keypress(int keycode, t_data *data)
     if (keycode == 65307)
         on_destroy(data);
     else if (keycode == 97 || keycode == 65361)
-        init_char(data, -24, 'l');
+        init_char(data, -32, 'l');
     else if (keycode == 100 || keycode == 65363)
-        init_char(data, 24, 'r');
+        init_char(data, 32, 'r');
     else if (keycode == 115 || keycode == 65364)
-        init_char(data, 24, 'd');
+        init_char(data, 32, 'd');
     else if (keycode == 119 || keycode == 65362)
-        init_char(data, -24, 'u');
-	else
-        ft_printf("%d\n", keycode);
+        init_char(data, -32, 'u');
     return (0);
 }
 

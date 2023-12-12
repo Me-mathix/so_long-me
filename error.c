@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:20:52 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/05 12:20:48 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:45:22 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,20 @@ void	check_props(t_data *data)
 {
 	int i;
 	int j;
-	t_props props_list;
 
 	i = 1;
 	j = 1;
-	props_list = init_prop(props_list);
+	data->props_list = init_prop(data->props_list);
 	while (i < (data->map_verlen - 1))
 	{
 		while (j < (data->map_horlen - 1))
 		{
 			if (data->map[i][j] == 'C')
-				props_list.colec += 1;
+				data->props_list.colec += 1;
 			else if (data->map[i][j] == 'P')
-				props_list.spawn += 1;
+				data->props_list.spawn += 1;
 			else if (data->map[i][j] == 'E')
-				props_list.exit += 1;
+				data->props_list.exit += 1;
 			else if (!is_from_set(data->map[i][j]))
 				ft_printerr(6);
 			j++;
@@ -85,7 +84,7 @@ void	check_props(t_data *data)
 		i++;
 		j = 1;
 	}
-		check_value(props_list);
+		check_value(data->props_list);
 }
 
 void	check_value(t_props props)
