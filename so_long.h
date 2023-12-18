@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/12 12:41:17 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:20:09 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_data
 
 //* PRINT
 void print_wall(t_data *data);
+void print_props(t_data *data);
 
 //PARSE
 char	**parse_map(char *ol_map, t_data *data);
@@ -80,6 +81,9 @@ void	check_value(t_props props);
 void	ft_printerr(int errcode);
 int		is_from_set(char c);
 
+//PUT SPRITE
+void put_wall(t_data *data, int x, int y);
+void put_props(t_data *data, int x, int y);
 
 
 #endif

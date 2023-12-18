@@ -32,7 +32,9 @@ SRC			=	main.c \
 				print_error.c \
 				error_utils.c \
 				player_move.c \
-				print_wall.c
+				print_wall.c \
+				print_props.c \
+				put_sprite.c
 
 INC_DIR		=	./
 
