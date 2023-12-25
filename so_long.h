@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/18 13:20:09 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/20 13:01:52 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-
+# include <sys/time.h>
 
 typedef struct s_sprites
 {
@@ -84,6 +84,7 @@ int		is_from_set(char c);
 //PUT SPRITE
 void put_wall(t_data *data, int x, int y);
 void put_props(t_data *data, int x, int y);
+void put_bg(t_data *data, int x, int y);
 
 
 #endif

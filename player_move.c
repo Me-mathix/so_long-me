@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:11:48 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/12 15:50:07 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:53:19 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ int check_r(t_data *data)
 	{
 		return(1);
 	}
+	else if (data->map[data->x_inmap][data->y_inmap + 1] == 'C')
+	{
+		data->map[data->x_inmap][data->y_inmap + 1] = '0';
+		data->props_list.colec -= 1;
+		data->y_inmap += 1;
+	}
+	else if (data->map[data->x_inmap][data->y_inmap + 1] == 'E')
+	{
+		if (data->props_list.colec == 0)
+			exit (0);
+		data->y_inmap += 1;
+	}
 	else
 		data->y_inmap += 1;
 	return (0);
@@ -29,6 +41,18 @@ int check_u(t_data *data)
 	if (data->map[data->x_inmap - 1][data->y_inmap] == '1')
 	{
 		return(1);
+	}
+	else if (data->map[data->x_inmap - 1][data->y_inmap] == 'C')
+	{
+		data->map[data->x_inmap - 1][data->y_inmap] = '0';
+		data->props_list.colec -= 1;
+		data->x_inmap -= 1;
+	}
+	else if (data->map[data->x_inmap - 1][data->y_inmap] == 'E')
+	{
+		if (data->props_list.colec == 0)
+			exit (0);
+		data->x_inmap -= 1;
 	}
 	else
 	{
@@ -43,6 +67,18 @@ int check_l(t_data *data)
 	{
 		return(1);
 	}
+	else if (data->map[data->x_inmap][data->y_inmap - 1] == 'C')
+	{
+		data->map[data->x_inmap][data->y_inmap - 1] = '0';
+		data->props_list.colec -= 1;
+		data->y_inmap -= 1;
+	}
+	else if (data->map[data->x_inmap][data->y_inmap - 1] == 'E')
+	{
+		if (data->props_list.colec == 0)
+			exit (0);
+		data->y_inmap -= 1;
+	}
 	else
 	{
 		data->y_inmap -= 1;
@@ -55,6 +91,18 @@ int check_d(t_data *data)
 		if (data->map[data->x_inmap + 1][data->y_inmap] == '1')
 		{
 			return(1);
+		}
+		else if (data->map[data->x_inmap + 1][data->y_inmap] == 'C')
+		{
+			data->map[data->x_inmap + 1][data->y_inmap] = '0';
+			data->props_list.colec -= 1;
+			data->x_inmap += 1;
+		}
+		else if (data->map[data->x_inmap + 1][data->y_inmap] == 'E')
+		{
+			if (data->props_list.colec == 0)
+				exit (0);
+			data->x_inmap += 1;
 		}
 		else
 		{

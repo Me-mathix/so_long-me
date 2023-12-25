@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:37:03 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/18 13:43:28 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/20 13:11:04 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void print_rprops(t_data *data, int x, int y)
 			if ((data->map[i][j] == 'C') || (data->map[i][j] == 'E'))
 				put_props(data, (x - ((data->y_inmap - j) * 32))
 				,(y - ((data->x_inmap - i) * 32)));
-			if ((data->map[i][j] == '1'))
+			if (data->map[i][j] == '1')
 				put_wall(data, (x - ((data->y_inmap - j) * 32))
+				,(y - ((data->x_inmap - i) * 32)));
+			if ((data->map[i][j] == '0') || (data->map[i][j] == 'P'))
+				put_bg(data, (x - ((data->y_inmap - j) * 32))
 				,(y - ((data->x_inmap - i) * 32)));
 			j++;
 		}
@@ -52,6 +55,9 @@ void print_lprops(t_data *data, int x, int y)
 				,(y - ((data->x_inmap - i) * 32)));
 			if ((data->map[i][j] == '1'))
 				put_wall(data, (x - ((data->y_inmap - j) * 32))
+				,(y - ((data->x_inmap - i) * 32)));
+			if ((data->map[i][j] == '0') || (data->map[i][j] == 'P'))
+				put_bg(data, (x - ((data->y_inmap - j) * 32))
 				,(y - ((data->x_inmap - i) * 32)));
 			j++;
 		}

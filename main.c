@@ -20,28 +20,28 @@
 
 void init_board(t_data *data)
 {
-	void *sprite;
- 	int i;
- 	int j;	
-	int	img_width;
-	int	img_height;
+	// void *sprite;
+ 	// int i;
+ 	// int j;	
+	// int	img_width;
+	// int	img_height;
 
-	i = 0;
-	j = 0;
-	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./snow.xpm", &img_width, &img_height);
-	while (j < 1080)
-	{
-		while (i < 1920)
-		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, i, j);
-			i += 32;
-		}
-		j += 32;
-		i = 0;
-	}
+	// i = 0;
+	// j = 0;
+	// sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./snow.xpm", &img_width, &img_height);
+	// while (j < 1080)
+	// {
+	// 	while (i < 1920)
+	// 	{
+	// 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, i, j);
+	// 		i += 32;
+	// 	}
+	// 	j += 32;
+	// 	i = 0;
+	// }
 	print_wall(data);
 	print_props(data);
-	mlx_destroy_image(data->mlx_ptr, sprite);
+	// mlx_destroy_image(data->mlx_ptr, sprite);
 }
 
 void init_char(t_data *data, int value, char ruld)
@@ -117,13 +117,13 @@ int main(int argc ,char **argv)
  
  	// int i = 0;
  	// int j = 0;
+	parse_map(argv[1], &data);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "hi :)");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	parse_map(argv[1], &data);
 	init_board(&data);
 	// pxl.img = mlx_new_image(data.mlx_ptr, 600, 400);
 	// pxl.addr = mlx_get_data_addr(pxl.img, &pxl.bits_per_pixel, &pxl.line_length,
