@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:20:52 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/12 09:45:22 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:53:57 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void parse_error(t_data *data)
 
     i = 0;
     if (data->map_horlen == data->map_verlen)
-        ft_printerr(1);
+        ft_printerr(data, 1);
     while (data->map[i] && (i < data->map_verlen))
 	{
         if ((int) ft_strlen(data->map[i++]) != data->map_horlen)
-            ft_printerr(2);
+            ft_printerr(data, 2);
 	}
 	i = 0;
 	check_wall(data);
@@ -38,14 +38,14 @@ void check_wall(t_data *data)
 	while (data->map[i][0])
 	{
 		if ((data->map[i][0] != '1') || (data->map[i][data->map_horlen - 1] != '1'))
-			ft_printerr(4);
+			ft_printerr(data, 4);
 		i++;
 	}
 	i = 0;
 	while (data->map[0][i])
 	{
 		if ((data->map[0][i] != '1') || (data->map[data->map_verlen - 1][i] != '1'))
-			ft_printerr(5);
+			ft_printerr(data, 5);
 		i++;
 	}
 	
@@ -78,19 +78,19 @@ void	check_props(t_data *data)
 			else if (data->map[i][j] == 'E')
 				data->props_list.exit += 1;
 			else if (!is_from_set(data->map[i][j]))
-				ft_printerr(6);
+				ft_printerr(data, 6);
 			j++;
 		}
 		i++;
 		j = 1;
 	}
-		check_value(data->props_list);
+		check_value(data);
 }
 
-void	check_value(t_props props)
+void	check_value(t_data *data)
 {
-	if ((props.exit > 1) || (props.exit < 1))
-		ft_printerr(7);
-	else if ((props.spawn > 1) || (props.spawn < 1))
-		ft_printerr(8);
+	if ((data->props_list.exit > 1) || (data->props_list.exit < 1))
+		ft_printerr(data, 7);
+	else if ((data->props_list.spawn > 1) || (data->props_list.spawn < 1))
+		ft_printerr(data, 8);
 }

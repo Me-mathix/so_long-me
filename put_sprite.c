@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:38:10 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/20 12:59:14 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 15:44:23 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void put_wall(t_data *data, int x, int y)
 	int	img_width;
 	int	img_height;
 
-	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./tree.xpm",
+	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./treee.xpm",
 									 &img_width, &img_height);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
 	mlx_destroy_image(data->mlx_ptr, wall);
@@ -30,7 +30,7 @@ void put_props(t_data *data, int x, int y)
 	int	img_width;
 	int	img_height;
 
-	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./fish.xpm",
+	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./colec.xpm",
 									 &img_width, &img_height);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
 	mlx_destroy_image(data->mlx_ptr, wall);

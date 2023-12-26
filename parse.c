@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/19 12:31:50 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 18:02:28 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ char *read_buffer(char *fd_name)
 
 char **parse_map(char *ol_map, t_data *data)
 {
+	char **bt_map;
+	
 	ol_map = read_buffer(ol_map);
 	data->map = ft_split(ol_map, '\n');
+	bt_map = ft_split(ol_map, '\n');
 	free(ol_map);
 	data->map_verlen = 0;
 	data->map_horlen = 0;
@@ -44,6 +47,12 @@ char **parse_map(char *ol_map, t_data *data)
 		data->map_horlen++;
 	parse_error(data);
 	start_char(data);
+	if (!canReachEnd(bt_map, data->x_inmap, data->y_inmap, data))
+	{
+		ft_free(bt_map);
+		ft_printerr(data, 9);
+	}
+	ft_free(bt_map);
 	return (data->map);
 }
 
@@ -52,8 +61,8 @@ void start_char(t_data *data)
 	int i;
 	int j;
 
-	data->x_img = 300;
-	data->y_img = 200;
+	data->x_img = 0;
+	data->y_img = 0;
 	i = 0;
 	j = 0;
 	while (i < (data->map_verlen - 1))

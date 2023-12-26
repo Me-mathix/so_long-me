@@ -34,7 +34,8 @@ SRC			=	main.c \
 				player_move.c \
 				print_wall.c \
 				print_props.c \
-				put_sprite.c
+				put_sprite.c \
+				backtrack.c
 
 INC_DIR		=	./
 

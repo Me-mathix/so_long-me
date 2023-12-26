@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:25:05 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/04 15:17:26 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:50:39 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ static void error_tree_1(int errcode)
 		ft_putstr_fd("EXIT error", 1);
 	if (errcode == 8)
 		ft_putstr_fd("SPAWN error", 1);
+	if (errcode == 9)
+		ft_putstr_fd("NO ESCAPE", 1);
 }
 
-void ft_printerr(int errcode)
+void ft_printerr(t_data *data, int errcode)
 {
 	ft_putstr_fd("Error\n", 1);
 	error_tree_1(errcode);
-	exit (0);
+	on_destroy(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/20 13:01:52 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:52:59 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_data
 	t_props		props_list;
 } t_data;
 
+//destroy 
+int on_destroy(t_data *data);
 
 //* PRINT
 void print_wall(t_data *data);
@@ -69,16 +71,15 @@ void	start_char(t_data *data);
 // player movement
 int 	is_valide_move(t_data *data, char ruld);
 
-
-
 //ERROR
 void	parse_error(t_data *data);
 void	check_wall(t_data *data);
 void	check_props(t_data *data);
-void	check_value(t_props props);
+void	check_value(t_data *data);
 
 //ERROR UTILS
-void	ft_printerr(int errcode);
+int 	canReachEnd(char **bt_map, int row, int col, t_data *data);
+void	ft_printerr(t_data *data, int errcode);
 int		is_from_set(char c);
 
 //PUT SPRITE

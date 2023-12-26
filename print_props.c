@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:37:03 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/20 13:11:04 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/26 18:53:43 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ void print_rprops(t_data *data, int x, int y)
 	int i;
 	int j;
 
-	i = 1;
+	i = data->x_inmap - (data->y_img / 100);
 	j = data->y_inmap + 1;
-	while (i <= data->map_verlen - 2)
+	while (i <= (data->x_inmap + ((600 - data->y_img) / 100)))
 	{
-		while (j <= data->map_horlen - 2)
+		while (j <= (data->y_inmap + ((800 - data->x_img) / 100)))
 		{
 			if ((data->map[i][j] == 'C') || (data->map[i][j] == 'E'))
-				put_props(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
+				put_props(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
 			if (data->map[i][j] == '1')
-				put_wall(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
+				put_wall(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
 			if ((data->map[i][j] == '0') || (data->map[i][j] == 'P'))
-				put_bg(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
+				put_bg(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
 			j++;
 		}
 		j = data->y_inmap + 1;
@@ -44,24 +44,24 @@ void print_lprops(t_data *data, int x, int y)
 	int i;
 	int j;
 
-	i = 1;
-	j = 1;
-	while (i <= data->map_verlen - 2)
+	i = data->x_inmap - (data->y_img / 100);
+	j = data->y_inmap - (data->x_img / 100);
+	while (i <= (data->x_inmap + ((600 - data->y_img) / 100)))
 	{
 		while (j <= data->y_inmap)
 		{
 			if ((data->map[i][j] == 'C') || (data->map[i][j] == 'E'))
-				put_props(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
-			if ((data->map[i][j] == '1'))
-				put_wall(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
+				put_props(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
+			if (data->map[i][j] == '1')
+				put_wall(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
 			if ((data->map[i][j] == '0') || (data->map[i][j] == 'P'))
-				put_bg(data, (x - ((data->y_inmap - j) * 32))
-				,(y - ((data->x_inmap - i) * 32)));
+				put_bg(data, (x - ((data->y_inmap - j) * 100))
+				,(y - ((data->x_inmap - i) * 100)));
 			j++;
 		}
-		j = 1;
+		j = data->y_inmap - (data->x_img / 100);
 		i++;
 	}
 }
