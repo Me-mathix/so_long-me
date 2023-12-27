@@ -6,11 +6,11 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 09:46:38 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 09:46:51 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:38:34 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int check_r(t_data *data)
 {

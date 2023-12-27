@@ -6,32 +6,31 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:38:10 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 09:57:29 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:35:56 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long_bonus.h"
 
-void put_wall(t_data *data, int x, int y)
+void put_wall(t_data *data, int x, int y, char c)
 {
-	void *wall;
-	int	img_width;
-	int	img_height;
+	void *sprite;
+	int	i;
 
-	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./treee.xpm",
-									 &img_width, &img_height);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
-	mlx_destroy_image(data->mlx_ptr, wall);
+	if (c == '1')
+		sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./treee.xpm", &i, &i);
+	if (c == 'M')
+		sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./treee.xpm", &i, &i);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, x, y);
+	mlx_destroy_image(data->mlx_ptr, sprite);
 }
 
 void put_props(t_data *data, int x, int y)
 {
 	void *wall;
-	int	img_width;
-	int	img_height;
+	int	i;
 
-	wall =  mlx_xpm_file_to_image(data->mlx_ptr, "./colec.xpm",
-									 &img_width, &img_height);
+	wall = mlx_xpm_file_to_image(data->mlx_ptr, "./colec.xpm", &i, &i);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
 	mlx_destroy_image(data->mlx_ptr, wall);
 }
@@ -39,21 +38,32 @@ void put_props(t_data *data, int x, int y)
 void put_bg(t_data *data, int x, int y)
 {
 	void *snow;
-	int	img_width;
-	int	img_height;
+	int	i;
 
-	snow =  mlx_xpm_file_to_image(data->mlx_ptr, "./snow.xpm",
-									 &img_width, &img_height);
+	snow = mlx_xpm_file_to_image(data->mlx_ptr, 
+								"./sprites/wood.xpm", &i, &i);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, snow, x, y);
 	mlx_destroy_image(data->mlx_ptr, snow);
 }
 
-void put_miaou(t_data *data, int x, int y)
+void put_miaou(t_data *data, int x, int y, char c)
 {
 	void *miaou;
-	int	i;
-
-	miaou =  mlx_xpm_file_to_image(data->mlx_ptr, "./miaou.xpm", &i, &i);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, miaou, x, y);
-	mlx_destroy_image(data->mlx_ptr, miaou);
+	int i;
+	
+	if (c == 'r')
+		right_anmim(data, x - 100, y);
+	else if (c == 'u')
+		up_anmim(data, x, y + 100);
+	else if (c == 'l')
+		left_anmim(data, x + 100, y);
+	else if (c == 'd')
+		down_anmim(data, x, y - 100);
+	else 
+	{
+		miaou = mlx_xpm_file_to_image(data->mlx_ptr, 
+									"./sprites/r1.xpm", &i, &i);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, miaou, x, y);
+		mlx_destroy_image(data->mlx_ptr, miaou);
+	}
 }

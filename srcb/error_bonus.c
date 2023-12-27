@@ -6,12 +6,12 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:20:52 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 09:49:58 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:38:19 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void parse_error(t_data *data)
 {

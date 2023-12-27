@@ -6,11 +6,11 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:00:42 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 09:51:15 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:38:22 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int is_from_set(char c)
 {

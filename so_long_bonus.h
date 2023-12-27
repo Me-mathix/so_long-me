@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 14:35:38 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:12:10 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		on_destroy(t_data *data);
 void	print_props(t_data *data);
 int		replace_till(t_data *data, int value);
 
+
 //PARSE
 char	**parse_map(char *ol_map, t_data *data);
 char	*read_buffer(char *fd_name);
@@ -83,12 +84,18 @@ void	ft_printerr(t_data *data, int errcode);
 int		is_from_set(char c);
 
 //PUT SPRITE
-void put_wall(t_data *data, int x, int y);
+void put_wall(t_data *data, int x, int y, char c);
 void put_props(t_data *data, int x, int y);
 void put_bg(t_data *data, int x, int y);
-void put_miaou(t_data *data, int x, int y);
+void put_miaou(t_data *data, int x, int y, char c);
 
 
+//ANIMATION
+void right_anmim(t_data *data, int x, int y);
+void left_anmim(t_data *data, int x, int y);
+void up_anmim(t_data *data, int x, int y);
+void down_anmim(t_data *data, int x, int y);
+void **init_anime(t_data *data);
 
 
 #endif
