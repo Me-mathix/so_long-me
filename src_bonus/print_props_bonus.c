@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_props.c                                      :+:      :+:    :+:   */
+/*   print_props_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:37:03 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/26 18:53:43 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 09:57:28 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void print_rprops(t_data *data, int x, int y)
 
 	i = data->x_inmap - (data->y_img / 100);
 	j = data->y_inmap + 1;
-	while (i <= (data->x_inmap + ((600 - data->y_img) / 100)))
+	while (i < (data->x_inmap + ((600 - data->y_img) / 100)))
 	{
-		while (j <= (data->y_inmap + ((800 - data->x_img) / 100)))
+		while (j < (data->y_inmap + ((800 - data->x_img) / 100)))
 		{
 			if ((data->map[i][j] == 'C') || (data->map[i][j] == 'E'))
 				put_props(data, (x - ((data->y_inmap - j) * 100))

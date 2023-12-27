@@ -20,37 +20,28 @@
 
 void init_board(t_data *data)
 {
-	print_wall(data);
 	print_props(data);
 }
 
 void init_char(t_data *data, int value, char ruld)
 {
-	void *sprite;	
-	int	img_width;
-	int	img_height;
-
 	if (is_valide_move(data, ruld))
 		return ;
-	sprite = mlx_xpm_file_to_image(data->mlx_ptr, "./miaou.xpm",
-									 &img_width, &img_height);
 	if (ruld == 'r' || ruld == 'l')
 	{
-		if(data->x_img + value < 0 || data->x_img + value >= 800)
-			;
+		if(data->x_img + value < 0 || data->x_img + value >= 800 - 100)
+			init_board(data);
 		else
-		data->x_img += value;
+		data->x_img += replace_till(data, value);
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
-		if(data->y_img + value < 0 || data->y_img + value >= 600)
-			;
+		if(data->y_img + value < 0 || data->y_img + value >= 600 - 100)
+			init_board(data);
 		else
-		data->y_img += value;
+		data->y_img += replace_till(data, value);
 	}
-	init_board(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, sprite, data->x_img, data->y_img);
-	mlx_destroy_image(data->mlx_ptr, sprite);
+	put_miaou(data, data->x_img, data->y_img);
 }
 
 int on_destroy(t_data *data)

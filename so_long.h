@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/26 12:52:59 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 09:21:25 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ typedef struct s_data
 } t_data;
 
 //destroy 
-int on_destroy(t_data *data);
+int		on_destroy(t_data *data);
 
 //* PRINT
-void print_wall(t_data *data);
-void print_props(t_data *data);
+void	print_props(t_data *data);
+int		replace_till(t_data *data, int value);
 
 //PARSE
 char	**parse_map(char *ol_map, t_data *data);
@@ -86,6 +86,7 @@ int		is_from_set(char c);
 void put_wall(t_data *data, int x, int y);
 void put_props(t_data *data, int x, int y);
 void put_bg(t_data *data, int x, int y);
+void put_miaou(t_data *data, int x, int y);
 
 
 #endif

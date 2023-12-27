@@ -27,19 +27,32 @@ MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
 MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 SRC			=	main.c \
-				parse.c \
-				error.c \
-				print_error.c \
-				error_utils.c \
-				player_move.c \
-				print_wall.c \
-				print_props.c \
-				put_sprite.c \
-				backtrack.c
+				src/parse.c \
+				src/error.c \
+				src/print_error.c \
+				src/error_utils.c \
+				src/player_move.c \
+				src/print_props.c \
+				src/put_sprite.c \
+				src/backtrack.c \
+				src/player_till.c
+
+SRCB		=	main.c \
+				srcb/parse_bonus.c \
+				srcb/error_bonus.c \
+				srcb/print_error_bonus.c \
+				srcb/error_utils_bonus.c \
+				srcb/player_move_bonus.c \
+				srcb/print_props_bonus.c \
+				srcb/put_sprite_bonus.c \
+				srcb/backtrack_bonus.c \
+				srcb/player_till_bonus.c
 
 INC_DIR		=	./
 
 OBJ			=	$(SRC:.c=.o)
+
+OBJB 		=	$(SRCB:.c=.o)
 
 .c.o:
 	$(CC) $(FLAG) -c $< -o $@
@@ -84,6 +97,11 @@ fclean: clean
 	@make fclean -C $(LIBFT_PATH)
 	@make fclean -C $(PRINTF_PATH)
 	@echo "\033[1;32mDone\n"
+
+bonus: lib pri mlx $(OBJB)
+	@echo "\033[0;33m\nCOMPILING SO_BONUS_LONG...\n"
+	$(CC) $(OBJB) $(LIBFT_LIB) $(PRINTF_LIB) $(MLX_EX) -o so_bonus_long
+	@echo "\033[1;32m./so_long created\n"
 
 re: fclean all
 

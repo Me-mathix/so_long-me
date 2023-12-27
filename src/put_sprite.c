@@ -6,11 +6,11 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:38:10 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/26 15:44:23 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/27 10:05:38 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void put_wall(t_data *data, int x, int y)
 {
@@ -46,4 +46,14 @@ void put_bg(t_data *data, int x, int y)
 									 &img_width, &img_height);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, snow, x, y);
 	mlx_destroy_image(data->mlx_ptr, snow);
+}
+
+void put_miaou(t_data *data, int x, int y)
+{
+	void *miaou;
+	int	i;
+
+	miaou =  mlx_xpm_file_to_image(data->mlx_ptr, "./miaou.xpm", &i, &i);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, miaou, x, y);
+	mlx_destroy_image(data->mlx_ptr, miaou);
 }
