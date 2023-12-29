@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/27 17:12:10 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 08:53:11 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		**map;
+	char		**bt_maap;
 	int			x_img;
 	int			y_img;
 	int 		x_inmap;
@@ -66,7 +67,7 @@ int		replace_till(t_data *data, int value);
 
 //PARSE
 char	**parse_map(char *ol_map, t_data *data);
-char	*read_buffer(char *fd_name);
+char	*read_buffer(char *fd_name, t_data *data);
 void	start_char(t_data *data);
 
 // player movement
@@ -79,9 +80,10 @@ void	check_props(t_data *data);
 void	check_value(t_data *data);
 
 //ERROR UTILS
-int 	canReachEnd(char **bt_map, int row, int col, t_data *data);
+int 	can_reach_end(char **bt_map, int row, int col, t_data *data);
 void	ft_printerr(t_data *data, int errcode);
 int		is_from_set(char c);
+int 	check_file_name(char *filename);
 
 //PUT SPRITE
 void put_wall(t_data *data, int x, int y, char c);

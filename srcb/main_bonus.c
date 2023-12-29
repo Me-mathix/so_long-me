@@ -29,14 +29,14 @@ void init_char(t_data *data, int value, char ruld)
 		return ;
 	if (ruld == 'r' || ruld == 'l')
 	{
-		if(data->x_img + value < 0 + 100 || data->x_img + value >= 800 - 100)
+		if(data->x_img + value < 0 + 100 || data->x_img + value >= 1900 - 100)
 			init_board(data);
 		else
 		data->x_img += value;
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
-		if(data->y_img + value < 0 + 100 || data->y_img + value >= 600 - 100)
+		if(data->y_img + value < 0 + 100 || data->y_img + value >= 1000 - 100)
 			init_board(data);
 		else
 		data->y_img += value;
@@ -49,9 +49,11 @@ int on_destroy(t_data *data)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	ft_free(data->map);
-	exit(0);
-	return (0);
+	if (data->map)
+		ft_free(data->map);
+	if (data->bt_maap)
+		ft_free(data->bt_maap);
+	exit (0);
 }
  
 int on_keypress(int keycode, t_data *data)
@@ -72,12 +74,17 @@ int on_keypress(int keycode, t_data *data)
 int main(int argc ,char **argv)
 {
 	t_data data;
-	(void) argc;
- 
+
+	if (argc != 2 || check_file_name(argv[1]))
+	{
+		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("arguments error", 1);
+		exit (0);
+	}
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 800, 600, "hi :)");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 1900, 1000, "hi :)");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	parse_map(argv[1], &data);

@@ -6,24 +6,31 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/27 10:05:14 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:41:23 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char *read_buffer(char *fd_name)
+char *read_buffer(char *fd_name, t_data *data)
 {
 	int file; 
 	int i;
 	char c;
 	char *buff;
 
-	i = 0;
-	buff = ft_calloc(1, 1000000);
+	i = 1;
 	file = open(fd_name, O_RDONLY);
 	if (file < 0)
-		return (0);
+		ft_printerr(data, 10);
+	if (read(file, &c, 1) == -1)
+		ft_printerr(data, 10);		
+	while (read(file, &c, 1))
+		i++;
+	close(file);
+	buff = ft_calloc((sizeof (char)), i + 1);
+	i = 0;
+	file = open(fd_name, O_RDONLY);
 	while (read(file, &c, 1))
 		buff[i++] = c;
 	buff[i] = '\0';
@@ -33,11 +40,11 @@ char *read_buffer(char *fd_name)
 
 char **parse_map(char *ol_map, t_data *data)
 {
-	char **bt_map;
-	
-	ol_map = read_buffer(ol_map);
+	data->map = NULL;
+	data->bt_maap = NULL;
+	ol_map = read_buffer(ol_map, data);
 	data->map = ft_split(ol_map, '\n');
-	bt_map = ft_split(ol_map, '\n');
+	data->bt_maap = ft_split(ol_map, '\n');
 	free(ol_map);
 	data->map_verlen = 0;
 	data->map_horlen = 0;
@@ -47,12 +54,8 @@ char **parse_map(char *ol_map, t_data *data)
 		data->map_horlen++;
 	parse_error(data);
 	start_char(data);
-	if (!canReachEnd(bt_map, data->x_inmap, data->y_inmap, data))
-	{
-		ft_free(bt_map);
+	if (!can_reach_end(data->bt_maap, data->x_inmap, data->y_inmap, data))
 		ft_printerr(data, 9);
-	}
-	ft_free(bt_map);
 	return (data->map);
 }
 
@@ -61,8 +64,8 @@ void start_char(t_data *data)
 	int i;
 	int j;
 
-	data->x_img = 0;
-	data->y_img = 0;
+	data->x_img = 100;
+	data->y_img = 100;
 	i = 0;
 	j = 0;
 	while (i < (data->map_verlen - 1))
