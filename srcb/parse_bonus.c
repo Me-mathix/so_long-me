@@ -6,25 +6,25 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/29 09:39:44 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:07:11 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-char *read_buffer(char *fd_name, t_data *data)
+char	*read_buffer(char *fd_name, t_data *data)
 {
-	int file; 
-	int i;
-	char c;
-	char *buff;
+	int		file;
+	int		i;
+	char	c;
+	char	*buff;
 
 	i = 1;
 	file = open(fd_name, O_RDONLY);
 	if (file < 0)
 		ft_printerr(data, 10);
 	if (read(file, &c, 1) == -1)
-		ft_printerr(data, 10);			
+		ft_printerr(data, 10);
 	while (read(file, &c, 1))
 		i++;
 	close(file);
@@ -35,10 +35,10 @@ char *read_buffer(char *fd_name, t_data *data)
 		buff[i++] = c;
 	buff[i] = '\0';
 	close(file);
-	return(buff);
+	return (buff);
 }
 
-char **parse_map(char *ol_map, t_data *data)
+char	**parse_map(char *ol_map, t_data *data)
 {
 	data->map = NULL;
 	data->bt_maap = NULL;
@@ -59,10 +59,10 @@ char **parse_map(char *ol_map, t_data *data)
 	return (data->map);
 }
 
-void start_char(t_data *data)
+void	start_char(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	data->x_img = 100;
 	data->y_img = 100;

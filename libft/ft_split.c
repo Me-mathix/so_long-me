@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 20:35:25 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/04 16:45:22 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:37:46 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static char	*ft_strndup_custom(char const *s, int *retindex, int index, int n)
 
 void	ft_free(char **strs)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (strs[i])
 	{
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	int		j;
 	int		wordcount;
 	char	**splitter;
-	
+
 	i = 0;
 	j = 0;
 	wordcount = ft_countword(s, c);

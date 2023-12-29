@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:13:38 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/11/21 18:14:14 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:24:55 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static int	lennum(unsigned int n)
 	{
 		return (1);
 	}
+	if (n < 0)
+	{
+		n *= -1;
+		count++;
+	}
 	while (n >= 16)
 	{
 		n /= 16;
@@ -36,15 +41,19 @@ static int	lennum(unsigned int n)
 
 int	print_lhex(unsigned int nbr)
 {
-	char 	*base;
-	int 	ret;
+	char	*base;
+	int		ret;
 
 	base = "0123456789abcdef";
 	ret = lennum(nbr);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+	}
 	if (nbr >= 16)
 	{
 		print_lhex(nbr / 16);
 	}
 	ft_putchar(base[nbr % 16]);
-	return(ret);
+	return (ret);
 }

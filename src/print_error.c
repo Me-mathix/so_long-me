@@ -6,13 +6,13 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:25:05 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/28 12:12:12 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:40:54 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void error_tree_1(int errcode)
+static void	error_tree_1(int errcode)
 {
 	if (errcode == 1)
 		ft_putstr_fd("Square not allowed", 1);
@@ -36,7 +36,7 @@ static void error_tree_1(int errcode)
 		ft_putstr_fd("file cant be read", 1);
 }
 
-void ft_printerr(t_data *data, int errcode)
+void	ft_printerr(t_data *data, int errcode)
 {
 	ft_putstr_fd("Error\n", 1);
 	error_tree_1(errcode);

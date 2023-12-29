@@ -6,52 +6,52 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:20:52 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/28 09:03:48 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:44:31 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../so_long.h"
 
-void parse_error(t_data *data)
+void	parse_error(t_data *data)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (data->map_horlen == data->map_verlen)
-        ft_printerr(data, 1);
-    while (data->map[i] && (i < data->map_verlen))
+	i = 0;
+	if (data->map_horlen == data->map_verlen)
+		ft_printerr(data, 1);
+	while (data->map[i] && (i < data->map_verlen))
 	{
-        if ((int) ft_strlen(data->map[i++]) != data->map_horlen)
-            ft_printerr(data, 2);
+		if ((int) ft_strlen(data->map[i++]) != data->map_horlen)
+			ft_printerr(data, 2);
 	}
 	i = 0;
 	check_wall(data);
 	check_props(data);
 }
 
-void check_wall(t_data *data)
+void	check_wall(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->map[i][0])
 	{
-		if ((data->map[i][0] != '1') || (data->map[i][data->map_horlen - 1] != '1'))
+		if ((data->map[i][0] != '1')
+			|| (data->map[i][data->map_horlen - 1] != '1'))
 			ft_printerr(data, 4);
 		i++;
 	}
 	i = 0;
 	while (data->map[0][i])
 	{
-		if ((data->map[0][i] != '1') || (data->map[data->map_verlen - 1][i] != '1'))
+		if ((data->map[0][i] != '1')
+			|| (data->map[data->map_verlen - 1][i] != '1'))
 			ft_printerr(data, 5);
 		i++;
 	}
-	
 }
 
-t_props init_prop(t_props list)
+t_props	init_prop(t_props list)
 {
 	list.colec = 0;
 	list.spawn = 0;
@@ -61,8 +61,8 @@ t_props init_prop(t_props list)
 
 void	check_props(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 1;
@@ -84,7 +84,7 @@ void	check_props(t_data *data)
 		i++;
 		j = 1;
 	}
-		check_value(data);
+	check_value(data);
 }
 
 void	check_value(t_data *data)

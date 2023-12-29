@@ -6,13 +6,13 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:07:08 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/11/21 13:02:21 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:22:18 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int print_char(char c)
+int	print_char(char c)
 {
 	write(1, &c, 1);
 	return (1);

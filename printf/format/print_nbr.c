@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:10:11 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/11/21 17:52:08 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:24:27 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	lennum(long n)
 int	print_nbr(int nb)
 {
 	long	n;
-	int 	ret;
+	int		ret;
 
 	n = (long) nb;
 	ret = lennum(nb);

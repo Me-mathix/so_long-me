@@ -6,16 +6,16 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:37:47 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/04 15:08:28 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:21:20 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int is_from_set(char c)
+static int	is_from_set(char c)
 {
-	char *set;
-	int i;
+	char	*set;
+	int		i;
 
 	set = "cspdiuxX%";
 	i = 0;
@@ -25,16 +25,19 @@ static int is_from_set(char c)
 	return (0);
 }
 
-int ft_printf(const char *arg, ...)
+int	ft_printf(const char *arg, ...)
 {
-	int i;
-	va_list lst;
-	int retc;
-	
+	int		i;
+	va_list	lst;
+	int		retc;
+
+	if (!arg)
+		return (-1);
 	va_start(lst, arg);
 	i = 0;
 	retc = 0;
 	while (arg[i])
+	{
 		if (arg[i] == '%')
 		{
 			if (is_from_set(arg[i + 1]))
@@ -45,14 +48,15 @@ int ft_printf(const char *arg, ...)
 		}
 		else
 			retc += print_char(arg[i++]);
+	}
+	va_end(lst);
 	return (retc);
 }
 
 // int main(void)
 // {
-	
 // 	// void *ptr = (void *)18446744073709551615;
-// 	ft_printf("%d", ft_printf(" %p ", (void *)-1 ));
+// 	ft_printf("%d", ft_printf(0));
 // 	write(1, "\n", 1);
-// 	printf("%d", printf(" %p ", (void *)-1 ));
+// 	printf("%d", printf(0));
 // }

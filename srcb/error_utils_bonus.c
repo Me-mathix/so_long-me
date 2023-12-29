@@ -6,16 +6,16 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:00:42 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 08:52:49 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:01:45 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-int is_from_set(char c)
+int	is_from_set(char c)
 {
-	char *set;
-	int i;
+	char	*set;
+	int		i;
 
 	set = "01CPEM";
 	i = 0;
@@ -25,9 +25,9 @@ int is_from_set(char c)
 	return (0);
 }
 
-int check_file_name(char *filename)
+int	check_file_name(char *filename)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(filename) - 4;
 	if (filename[i++] != '.')

@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:14:46 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/11/21 18:28:54 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:24:13 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ static int	lennum(size_t n)
 	{
 		return (1);
 	}
+	if (n < 0)
+	{
+		n *= -1;
+		count++;
+	}
 	while (n >= 16)
 	{
 		n /= 16;
@@ -28,30 +33,36 @@ static int	lennum(size_t n)
 	}
 	return (count);
 }
+
 static int	print_phex(size_t nbr)
 {
-	char 	*base;
-	int 	ret;
+	char	*base;
+	int		ret;
 
 	base = "0123456789abcdef";
 	ret = lennum(nbr);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+	}
 	if (nbr >= 16)
 	{
 		print_phex(nbr / 16);
 	}
 	print_char(base[nbr % 16]);
-	return(ret);
+	return (ret);
 }
+
 int	print_pointer(void *ptr)
 {
 	size_t	*i;
-	int 	count;
-	
+	int		count;
+
 	i = (size_t *)&ptr;
 	if (i[0] == 0)
 	{
 		write(1, "(nil)", 5);
-		return(5);
+		return (5);
 	}
 	count = 2;
 	write(1, "0x", 2);

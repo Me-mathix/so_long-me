@@ -14,33 +14,28 @@ SRCB =
 
 OBJ = $(SRC:.c=.o)
 
-OBJB = $(SRCB:.c=.o)
-
 FLAGS = -Wall -Wextra -Werror  
 
 ARC = ar rcs
 
 CC = cc
 
-INCLUDE = ./
+INCLUDE = ft_printf.h
 
 .c.o:
 		$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I $(INCLUDE)
 
-$(NAME): ${OBJ}
+$(NAME): $(OBJ)
 		$(ARC) $(NAME) $(OBJ)
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJ) $(OBJB)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-bonus: ${OBJB} ${OBJ}
-	$(ARC) $(NAME) $(OBJB) $(OBJ)
-
-.PHONY : all clean fclean re so bonus
+.PHONY : all clean fclean re
