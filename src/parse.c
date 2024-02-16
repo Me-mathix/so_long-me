@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:26:29 by mathieu           #+#    #+#             */
-/*   Updated: 2023/12/29 15:42:36 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:12:21 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,16 @@ char	**parse_map(char *ol_map, t_data *data)
 	data->map = NULL;
 	data->bt_maap = NULL;
 	ol_map = read_buffer(ol_map, data);
+	if (ft_strlen(ol_map) == 0)
+	{
+		free(ol_map);
+		on_destroy(data);
+	}
 	data->map = ft_split(ol_map, '\n');
 	data->bt_maap = ft_split(ol_map, '\n');
 	free(ol_map);
+	if (!data->map || !data->bt_maap)
+		on_destroy(data);
 	data->map_verlen = 0;
 	data->map_horlen = 0;
 	while (data->map[data->map_verlen][0] != '\0')

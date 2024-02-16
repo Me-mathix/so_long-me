@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:00:30 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 18:18:47 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:03:53 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <sys/time.h>
-
-typedef struct s_sprites
-{
-	void	*player;
-	void	*board;
-}	t_sprites;
 
 typedef struct s_props
 {
@@ -34,14 +27,6 @@ typedef struct s_props
 	int	spawn;
 	int	exit;
 }	t_props;
-
-typedef struct s_img {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
 
 typedef struct s_data
 {

@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:01:42 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 15:30:22 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:14:02 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 	parse_map(argv[1], &data);
 	init_board(&data);
 	init_char(&data, 0, 0);
-	mlx_hook(data.win_ptr, 02, (1L << 0), &on_keypress, &data);
+	mlx_hook(data.win_ptr, 03, (1L << 1), &on_keypress, &data);
 	mlx_hook(data.win_ptr, 17, (1L << 17), &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);

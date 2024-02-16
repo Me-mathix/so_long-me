@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:00:42 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 16:01:45 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:38:21 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,5 @@ int	check_file_name(char *filename)
 	int	i;
 
 	i = ft_strlen(filename) - 4;
-	if (filename[i++] != '.')
-		return (1);
-	if (filename[i++] != 'b')
-		return (1);
-	if (filename[i++] != 'e')
-		return (1);
-	if (filename[i++] != 'r')
-		return (1);
-	return (0);
+	return (ft_strncmp(filename + i, ".ber", 4));
 }

@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:38:10 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 15:53:28 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:46:02 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	put_wall(t_data *data, int x, int y)
 
 	wall = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/treee.xpm",
 			&img_width, &img_height);
+	if (!wall)
+		on_destroy(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
 	mlx_destroy_image(data->mlx_ptr, wall);
 }
@@ -31,6 +33,8 @@ void	put_props(t_data *data, int x, int y)
 
 	wall = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./sprites/colec.xpm", &i, &i);
+	if (!wall)
+		on_destroy(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, x, y);
 	mlx_destroy_image(data->mlx_ptr, wall);
 }
@@ -42,6 +46,8 @@ void	put_bg(t_data *data, int x, int y)
 
 	snow = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./sprites/wood.xpm", &i, &i);
+	if (!snow)
+		on_destroy(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, snow, x, y);
 	mlx_destroy_image(data->mlx_ptr, snow);
 }
@@ -52,6 +58,8 @@ void	put_miaou(t_data *data, int x, int y)
 	int		i;
 
 	miaou = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/miaou.xpm", &i, &i);
+	if (!miaou)
+		on_destroy(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, miaou, x, y);
 	mlx_destroy_image(data->mlx_ptr, miaou);
 }

@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:25:05 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 16:07:28 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:51:49 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	error_tree_1(int errcode)
 
 void	ft_printerr(t_data *data, int errcode)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
 	error_tree_1(errcode);
 	on_destroy(data);
 }

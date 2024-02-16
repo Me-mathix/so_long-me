@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:56:44 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 18:24:56 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:15:10 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_char(t_data *data, int value, char ruld)
 		if (data->x_img + value < 100 || data->x_img + value >= 1800)
 			print_props(data);
 		else
-		data->x_img += value;
+			data->x_img += value;
 	}
 	if (ruld == 'u' || ruld == 'd')
 	{
 		if (data->y_img + value < 100 || data->y_img + value >= 900)
 			print_props(data);
 		else
-		data->y_img += value;
+			data->y_img += value;
 	}
 	put_move(data);
 	put_miaou(data, data->x_img, data->y_img, ruld);
@@ -43,7 +43,7 @@ int	on_destroy(t_data *data)
 		ft_free(data->map);
 	if (data->bt_maap)
 		ft_free(data->bt_maap);
-	exit (0);
+	exit(0);
 }
 
 int	on_keypress(int keycode, t_data *data)
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	{
 		ft_putstr_fd("Error\n", 1);
 		ft_putstr_fd("arguments error", 1);
-		exit (0);
+		exit(0);
 	}
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	parse_map(argv[1], &data);
 	print_props(&data);
 	init_char(&data, 0, 0);
-	mlx_hook(data.win_ptr, 02, (1L << 0), &on_keypress, &data);
+	mlx_hook(data.win_ptr, 03, (1L << 1), &on_keypress, &data);
 	mlx_hook(data.win_ptr, 17, (1L << 17), &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);

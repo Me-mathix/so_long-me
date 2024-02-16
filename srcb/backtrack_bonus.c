@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 09:28:06 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 15:59:33 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:13:24 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	can_reach_end(char **bt_map, int row, int col, t_data *data)
 	if (bt_map[row][col] == 'C')
 		i++;
 	if (bt_map[row][col] == 'E')
-		e++;
+		return (e++, 0);
 	bt_map[row][col] = 'V';
 	if (can_reach_end(bt_map, (row + 1), col, data)
 		|| can_reach_end(bt_map, (row - 1), col, data)

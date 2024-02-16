@@ -2,7 +2,7 @@ NAME		=	so_long
 
 CC			=	cc
 
-FLAG		=	-Wall -Wextra -Werror -g3
+FLAG		=	-Wall -Wextra -Werror -g
 
 LIBFT_PATH	=	./libft/
 
@@ -58,7 +58,7 @@ OBJB 		=	$(SRCB:.c=.o)
 .c.o:
 	$(CC) $(FLAG) -c $< -o $@
 
-all: $(NAME)
+all: lib pri mlx $(NAME)
 
 pri:
 	@echo "\033[0;33m\nCOMPILING $(PRINTF_PATH)\n"
@@ -75,7 +75,7 @@ mlx:
 	@make -sC $(MLX_PATH)
 	@echo "\033[1;32mMLX_lib created\n"
 
-$(NAME): lib pri mlx $(OBJ)
+$(NAME): $(OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
 	$(CC) $(OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(MLX_EX) -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"

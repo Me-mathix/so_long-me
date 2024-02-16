@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:20:52 by mda-cunh          #+#    #+#             */
-/*   Updated: 2023/12/29 16:01:24 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:14:45 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	parse_error(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->map_horlen == data->map_verlen)
-		ft_printerr(data, 1);
 	while (data->map[i] && (i < data->map_verlen))
 	{
 		if ((int) ft_strlen(data->map[i++]) != data->map_horlen)
